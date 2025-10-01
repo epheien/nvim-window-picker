@@ -117,7 +117,7 @@ function M:_show_letter_in_window(window, char)
 		height = height,
 		style = 'minimal',
 		border = border,
-		zindex = 300,
+		zindex = 1000,
 	})
 
 	vim.api.nvim_buf_set_lines(buffer_id, 0, -1, true, lines)
