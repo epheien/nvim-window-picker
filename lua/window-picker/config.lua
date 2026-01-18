@@ -35,6 +35,14 @@ local config = {
 			-- property to use instead
 
 			font = 'ansi-shadow', -- ansi-shadow |
+
+			-- position of the big letter in the window
+			-- "center" shows the letter in the center of the window (default)
+			-- "top-left" shows the letter in the top-left corner
+			-- "top-right" shows the letter in the top-right corner
+			-- "bottom-left" shows the letter in the bottom-left corner
+			-- "bottom-right" shows the letter in the bottom-right corner
+			position = 'center', -- "center" | "top-left" | "top-right" | "bottom-left" | "bottom-right"
 		},
 	},
 

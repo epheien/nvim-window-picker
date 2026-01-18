@@ -41,6 +41,7 @@ end
 function M:set_config(config)
 	self.chars = config.chars
 	local font = config.picker_config.floating_big_letter.font
+	self.position = config.picker_config.floating_big_letter.position
 
 	if type(font) == 'string' then
 		self.big_chars = require(('window-picker.hints.data.%s'):format(font))
@@ -56,9 +57,26 @@ function M:_get_float_win_pos(window)
 	local height = vim.api.nvim_win_get_height(window)
 
 	local point = {
-		x = ((width - self.win.width) / 2),
-		y = ((height - self.win.height) / 2),
+		x = 0,
+		y = 0,
 	}
+
+	if self.position == 'center' then
+		point.x = math.floor((width - self.win.width) / 2)
+		point.y = math.floor((height - self.win.height) / 2)
+	elseif self.position == 'top-left' then
+		point.x = 0
+		point.y = 0
+	elseif self.position == 'top-right' then
+		point.x = math.max(0, width - self.win.width)
+		point.y = 0
+	elseif self.position == 'bottom-left' then
+		point.x = 0
+		point.y = math.max(0, height - self.win.height)
+	elseif self.position == 'bottom-right' then
+		point.x = math.max(0, width - self.win.width)
+		point.y = math.max(0, height - self.win.height)
+	end
 
 	return point
 end
